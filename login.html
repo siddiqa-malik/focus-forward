@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Focus-Forward | Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary-fixed": "#dee0ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-background": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "surface": "#f8f9fa",
+                    "on-primary-fixed": "#000c62",
+                    "surface-bright": "#f8f9fa",
+                    "on-surface": "#191c1d",
+                    "primary-container": "#4551af",
+                    "on-primary-fixed-variant": "#303c9a",
+                    "on-surface-variant": "#454652",
+                    "surface-dim": "#d9dadb",
+                    "outline-variant": "#c5c5d4",
+                    "on-secondary-fixed-variant": "#2f3f92",
+                    "secondary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#8f4700",
+                    "on-tertiary-container": "#ffc7a2",
+                    "primary-fixed": "#dfe0ff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#2b3896",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary-container": "#cbcfff",
+                    "tertiary": "#6c3400",
+                    "inverse-primary": "#bcc2ff",
+                    "surface-tint": "#4955b3",
+                    "outline": "#757684",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed": "#00105b",
+                    "secondary-container": "#96a5ff",
+                    "primary-fixed-dim": "#bcc2ff",
+                    "on-secondary-container": "#27378a",
+                    "secondary": "#4858ab",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .headline-font {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center p-6">
+<div class="grid grid-cols-1 md:grid-cols-12 max-w-6xl w-full bg-surface-container-lowest rounded-[2rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)]">
+<!-- Branding & Inspiration Side -->
+<div class="hidden md:flex md:col-span-6 bg-primary p-12 flex-col justify-between relative overflow-hidden">
+<div class="absolute inset-0 opacity-0.2" data-alt="Abstract geometric architectural patterns with intersecting lines and soft shadows in deep indigo tones">
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-secondary opacity-90"></div>
+</div>
+<div class="relative z-10">
+<span class="headline-font font-black text-on-primary text-3xl tracking-tight">Focus-Forward</span>
+</div>
+<div class="relative z-10 max-w-sm">
+<h1 class="headline-font text-on-primary text-5xl font-extrabold leading-[1.1] tracking-tight mb-6">
+                    Curate your time, master your focus.
+                </h1>
+<p class="text-on-primary-container text-lg leading-relaxed">
+                    Enter your sanctuary for deep work. A minimalist interface designed for professional clarity and intentional living.
+                </p>
+</div>
+<div class="relative z-10 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="User" data-alt="Portrait of a focused professional man in a clean modern architectural setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUW1XZuyB2Nnl2NAcIZ7z_WYQvE5PgGPg8IRwCSEPBnUovSOeeVJqJujq4aSSo8I6_EhBzBjF5QBeKuK6Dq-Mk5rtovyxdhU9p4jwjXnQJ45xT_l1dpePVVA2DLcdmNfNcEausgswohhhr3IxNeqeXlrYJ3e4Q2BrOlnU9B1skdnGRefWEXwJNtqBCWqjBXFiu-Fvu4EuBbFZGE34m8XuqYcbeuJCFdPNbvENk2uiC9LLC7SRwplKp-0hfPQthAdg4Xae4VzawXZtq"/>
+</div>
+<div>
+<p class="text-on-primary font-semibold text-sm">Alex Curator</p>
+<p class="text-on-primary-container text-xs">Deep Work Specialist</p>
+</div>
+</div>
+</div>
+<!-- Login Form Side -->
+<div class="col-span-1 md:col-span-6 p-8 md:p-16 flex flex-col justify-center">
+<div class="mb-10">
+<h2 class="headline-font text-3xl font-bold text-on-surface mb-2">Welcome Back</h2>
+<p class="text-on-surface-variant font-medium">Continue your journey into deep work.</p>
+</div>
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-xl text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 transition-all font-body text-sm outline-none" id="email" placeholder="alex@curator.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="font-label text-[11px] font-bold text-primary hover:text-primary-container transition-colors" href="#">FORGOT PASSWORD?</a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container-highest border-none rounded-xl text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 transition-all font-body text-sm outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 right-4 flex items-center text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-3 py-2">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-2 border-outline-variant text-primary focus:ring-primary/20 transition-all cursor-pointer appearance-none checked:bg-primary checked:border-primary" id="remember" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-on-primary text-[16px] pointer-events-none opacity-0 peer-checked:opacity-100 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" data-icon="check">check</span>
+</div>
+<label class="text-sm font-medium text-on-surface-variant cursor-pointer select-none" for="remember">Keep me focused on this device</label>
+</div>
+<!-- Action Button -->
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold text-base shadow-[0_8px_20px_-4px_rgba(43,56,150,0.3)] hover:shadow-[0_12px_24px_-4px_rgba(43,56,150,0.4)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                    Login to Workspace
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- SSO Options -->
+<div class="mt-10">
+<div class="relative flex items-center justify-center mb-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/30"></div>
+</div>
+<span class="relative px-4 bg-surface-container-lowest text-[11px] font-bold uppercase tracking-widest text-outline">or continue with</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low transition-colors group">
+<img alt="Google" class="w-5 h-5 grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrrzkOlPCz3PnOL10Y74NWxb07s-_c2Wj_yDhsPt6WcyhfrKRxSnGnigA0uIWxlM5jmF773YahX0mzLnrzw5btgwU7nHm-6eBR-OSncj6_tLT_waMXXBJ61MqZ9zBYD8yYBBMVeXr6UU3nRT8rODrruEit0MSaGoKbl4FkqeRdQhbzUnnMBn-6oIcVKtbkcmIErHRlH9quGvkO0R-q1RS2rpe90OB_wq_eo5konmnCRuz-mDfuOF3JRydCAtzYjNnGRIuqRiLsBDR4"/>
+<span class="text-sm font-semibold text-on-surface-variant">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low transition-colors group">
+<span class="material-symbols-outlined text-xl text-outline group-hover:text-on-surface transition-colors" data-icon="apple">ios</span>
+<span class="text-sm font-semibold text-on-surface-variant">Apple</span>
+</button>
+</div>
+</div>
+<!-- Registration Link -->
+<div class="mt-12 text-center">
+<p class="text-on-surface-variant text-sm font-medium">
+                    New to the sanctuary? 
+                    <a class="text-primary font-bold ml-1 hover:underline decoration-2 underline-offset-4" href="#">Create your account</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>
