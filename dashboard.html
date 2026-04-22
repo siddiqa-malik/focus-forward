@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Focus-Forward Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#301400",
+                    "secondary-fixed": "#dee0ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-background": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "surface": "#f8f9fa",
+                    "on-primary-fixed": "#000c62",
+                    "surface-bright": "#f8f9fa",
+                    "on-surface": "#191c1d",
+                    "primary-container": "#4551af",
+                    "on-primary-fixed-variant": "#303c9a",
+                    "on-surface-variant": "#454652",
+                    "surface-dim": "#d9dadb",
+                    "outline-variant": "#c5c5d4",
+                    "on-secondary-fixed-variant": "#2f3f92",
+                    "secondary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#8f4700",
+                    "on-tertiary-container": "#ffc7a2",
+                    "primary-fixed": "#dfe0ff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#2b3896",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "on-primary-container": "#cbcfff",
+                    "tertiary": "#6c3400",
+                    "inverse-primary": "#bcc2ff",
+                    "surface-tint": "#4955b3",
+                    "outline": "#757684",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed": "#00105b",
+                    "secondary-container": "#96a5ff",
+                    "primary-fixed-dim": "#bcc2ff",
+                    "on-secondary-container": "#27378a",
+                    "secondary": "#4858ab",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .headline-font { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased mb-24 md:mb-0 md:pl-80">
+<!-- Navigation Drawer (Sidebar) - Desktop -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 rounded-r-2xl bg-slate-50 dark:bg-slate-950 bg-slate-100/50 dark:bg-slate-900/50 shadow-2xl flex-col p-6 space-y-2 z-40">
+<div class="flex items-center space-x-3 mb-10 px-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="Alex Curator" data-alt="Professional portrait of a focused man in a creative studio setting with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZBfAUQ89w2-AschtBr04BFBnmAkHgO8LF2MoDgwxbcgCkBQooff-_09_vDFlR4Ktv0j2kn0tpR7G0aaf04WP0VEMC_PZ3UyVmx4ltOHB_wcNlbio4ikiAOeFP9p-3H3DNdfls5YU9JT7PT9VnG9ZosI56gA_ZhdPy8Xk4MxTpjCIdIRzN8ZDDW3dClqaORYqZ1-Oc_mhXFpB9ublaylxlJBWCJppKqD3wRS5kbp33CJ0KU6JfX6rchy-nIlZPsnuSU0j6e39z6t0L"/>
+</div>
+<div>
+<p class="font-headline font-bold text-indigo-900 text-base">Alex Curator</p>
+<p class="font-body text-xs text-slate-600 dark:text-slate-400">Focusing on Deep Work</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center space-x-3 px-4 py-3 bg-indigo-100/50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 font-bold rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body text-sm">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="inbox">inbox</span>
+<span class="font-body text-sm">Inbox</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+<span class="font-body text-sm">Completed</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+<span class="font-body text-sm">Archive</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-30 md:hidden bg-slate-50 dark:bg-slate-950 flex items-center justify-between px-6 py-4">
+<span class="material-symbols-outlined text-indigo-700 dark:text-indigo-400" data-icon="menu">menu</span>
+<h1 class="font-headline font-black text-indigo-900 dark:text-indigo-100 text-xl tracking-tight">Focus-Forward</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-primary-fixed">
+<img alt="User Profile" data-alt="Close up avatar of a professional designer with soft studio light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-8Y54qEv9wv7Aj1-hfA5BvNqXDRLxjogpn1Qbp4sj-1N6uyGBetezjrp0OtXwIp71P8SL_5H0wnQa8C1UuK_ITXybPUuAINSVVW84gXuQf_4HYR3qnJ-N5Llul3ppGYy0sKc2Of17EoWxegmiMcymPBc6ZYtJw7cjsIrozZuborbL2u34T-z6G_dJzllH9wltEVgYEX_Axk799iPqLJwrnIX6XcJAQZmlbxjsbe_9FgF7sfM1aAiU5HDeut5IPPoFedBrSLs05OC7"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-12 px-6 md:pt-16 md:px-12 max-w-6xl mx-auto">
+<!-- Welcome Editorial Section -->
+<section class="mb-12">
+<h2 class="font-headline text-5xl md:text-7xl font-extrabold text-on-surface tracking-tighter mb-4">
+                Today's <span class="text-primary">Clarity.</span>
+</h2>
+<p class="font-body text-on-surface-variant text-lg max-w-xl leading-relaxed">
+                You have 3 high-priority objectives for the day. Design your space, then execute with intent.
+            </p>
+</section>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/15 flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-2">Weekly Momentum</p>
+<h3 class="font-headline text-3xl font-bold">24 Tasks Finished</h3>
+</div>
+<div class="relative z-10 flex items-center space-x-2 text-primary font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-sm">12% more than last week</span>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[160px]" data-icon="auto_graph">auto_graph</span>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between h-48 bg-gradient-to-br from-primary to-primary-container">
+<div>
+<p class="font-label text-xs uppercase tracking-widest opacity-80 mb-2">Focus Time</p>
+<h3 class="font-headline text-3xl font-bold">4.5h</h3>
+</div>
+<div class="w-full bg-on-primary/20 h-1.5 rounded-full overflow-hidden">
+<div class="bg-on-primary h-full w-[70%]"></div>
+</div>
+<p class="text-xs opacity-90">Daily deep work goal: 6h</p>
+</div>
+</div>
+<!-- Task List Section -->
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-2xl font-bold tracking-tight ">My Tasks</h3>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="filter_list">filter_list</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="sort">sort</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Task Card 1 -->
+<div class="group bg-surface-container-lowest hover:bg-white rounded-xl p-6 flex items-center justify-between transition-all duration-300 border border-transparent hover:border-outline-variant/30 shadow-sm hover:shadow-md">
+<div class="flex items-center space-x-6">
+<button class="w-7 h-7 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
+<div class="w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all"></div>
+</button>
+<div>
+<h4 class="font-body text-lg font-bold text-on-surface task-title">Finish Design</h4>
+<p class="font-body text-sm text-on-surface-variant task-description">Update the Focus-Forward component library</p>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Design</span>
+<span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer" data-icon="delete">delete</span>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- Empty State Recommendation -->
+<div class="mt-16 p-12 rounded-3xl border-2 border-dashed border-outline-variant/30 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-6xl text-primary-fixed-dim mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="font-headline text-xl font-bold mb-2">You're doing great, Alex.</h4>
+<p class="font-body text-on-surface-variant max-w-sm mb-6">Complete these priorities to unlock your afternoon creative window.</p>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-8 md:bottom-12 md:right-12 w-16 h-16 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40 group overflow-hidden AddButton">
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined relative z-10 text-3xl" data-icon="add">add</span>
+</button>
+<!-- Bottom Navigation Bar - Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-around items-center px-4 pb-safe z-50 border-t border-slate-200/15 dark:border-slate-800/15 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-200 rounded-2xl px-6 py-2 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="target">target</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Focus</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Settings</span>
+</a>
+</nav>
+
+
+
+
+<!-- add task model -->
+</main>
+<!-- Task Modal Overlay -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 task-model " style="display: none;" ;">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-surface/10 backdrop-blur-custom"></div>
+<!-- Modal Content -->
+<div class="relative bg-surface-container-lowest w-full max-w-2xl rounded-xl shadow-[0_32px_64px_-12px_rgba(0,0,0,0.12)] overflow-hidden">
+<!-- Modal Header -->
+<div class="bg-primary p-8 text-on-primary">
+<h2 class="font-headline text-2xl font-bold tracking-tight">New Curation</h2>
+<p class="text-on-primary-container text-sm mt-1">Design a new focal point for your workspace.</p>
+</div>
+<!-- Form Content -->
+<div class="p-10 space-y-10 task-form">
+<!-- Task Title Input -->
+<div class="group ">
+<label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-3 task-Title">Task Title</label>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-headline text-lg focus:ring-2 focus:ring-primary transition-all" placeholder="What requires your focus?" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Priority Radio Selection -->
+<div>
+<label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Task Priority</label>
+<div class="space-y-3">
+<label class="flex items-center gap-4 cursor-pointer group">
+<input checked="" class="hidden peer" name="priority" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary transition-colors">Extreme</span>
+</label>
+<label class="flex items-center gap-4 cursor-pointer group">
+<input class="hidden peer" name="priority" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">Moderate</span>
+</label>
+<label class="flex items-center gap-4 cursor-pointer group">
+<input class="hidden peer" name="priority" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">Low</span>
+</label>
+</div>
+</div>
+<!-- Status Radio Selection -->
+<div>
+<label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Status</label>
+<div class="space-y-3">
+<label class="flex items-center gap-4 cursor-pointer group">
+<input checked="" class="hidden peer" name="status" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary transition-colors">Not Started</span>
+</label>
+<label class="flex items-center gap-4 cursor-pointer group">
+<input class="hidden peer" name="status" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">In Progress</span>
+</label>
+<label class="flex items-center gap-4 cursor-pointer group">
+<input class="hidden peer" name="status" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
+<div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">Completed</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Description Field -->
+<div class="task-description">
+<label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-3">Description</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-body leading-relaxed focus:ring-2 focus:ring-primary transition-all resize-none" placeholder="Clarify the objective..." rows="4"></textarea>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="px-10 py-8 bg-surface-container-low flex justify-end items-center gap-6">
+<button class="text-primary font-bold text-sm tracking-wide uppercase px-6 py-2 hover:bg-primary/5 transition-colors rounded Cancel-Button">Cancel</button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-full shadow-lg shadow-primary/20 transform active:scale-95 transition-all SaveTask-Button">Save Task</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<div class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-100 rounded-xl px-5 py-2">
+<span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Focus</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-600 dark:hover:text-indigo-300">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Tasks</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-600 dark:hover:text-indigo-300">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Schedule</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-600 dark:hover:text-indigo-300">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Archive</span>
+</div>
+</nav>
+<script src="dashBoard.js"></script>
+</body></html>
