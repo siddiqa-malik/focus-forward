@@ -183,23 +183,8 @@
 <span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="sort">sort</span>
 </div>
 </div>
-<div class="space-y-4">
-<!-- Task Card 1 -->
-<div class="group bg-surface-container-lowest hover:bg-white rounded-xl p-6 flex items-center justify-between transition-all duration-300 border border-transparent hover:border-outline-variant/30 shadow-sm hover:shadow-md">
-<div class="flex items-center space-x-6">
-<button class="w-7 h-7 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
-<div class="w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all"></div>
-</button>
-<div>
-<h4 class="font-body text-lg font-bold text-on-surface task-title">Finish Design</h4>
-<p class="font-body text-sm text-on-surface-variant task-description">Update the Focus-Forward component library</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Design</span>
-<span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer" data-icon="delete">delete</span>
-<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" data-icon="more_vert">more_vert</span>
-</div>
+<div class="space-y-4 card-container">
+
 </div>
 
 </div>
@@ -250,11 +235,11 @@
 <p class="text-on-primary-container text-sm mt-1">Design a new focal point for your workspace.</p>
 </div>
 <!-- Form Content -->
-<div class="p-10 space-y-10 task-form">
+<form class="p-10 space-y-10 task-form">
 <!-- Task Title Input -->
 <div class="group ">
 <label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-3 task-Title">Task Title</label>
-<input class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-headline text-lg focus:ring-2 focus:ring-primary transition-all" placeholder="What requires your focus?" type="text"/>
+<input class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-headline text-lg focus:ring-2 focus:ring-primary transition-all" placeholder="What requires your focus?" type="text" name="task-Title"/>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 <!-- Priority Radio Selection -->
@@ -313,16 +298,16 @@
 </div>
 </div>
 <!-- Description Field -->
-<div class="task-description">
+<div >
 <label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-3">Description</label>
-<textarea class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-body leading-relaxed focus:ring-2 focus:ring-primary transition-all resize-none" placeholder="Clarify the objective..." rows="4"></textarea>
-</div>
+<textarea  class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-body leading-relaxed focus:ring-2 focus:ring-primary transition-all resize-none" placeholder="Clarify the objective..." rows="4" name="task-description"></textarea>
 </div>
 <!-- Footer Actions -->
 <div class="px-10 py-8 bg-surface-container-low flex justify-end items-center gap-6">
-<button class="text-primary font-bold text-sm tracking-wide uppercase px-6 py-2 hover:bg-primary/5 transition-colors rounded Cancel-Button">Cancel</button>
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-full shadow-lg shadow-primary/20 transform active:scale-95 transition-all SaveTask-Button">Save Task</button>
+<button type="button" class="text-primary font-bold text-sm tracking-wide uppercase px-6 py-2 hover:bg-primary/5 transition-colors rounded Cancel-Button">Cancel</button>
+<button type="button" class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-full shadow-lg shadow-primary/20 transform active:scale-95 transition-all SaveTask-Button">Save Task</button>
 </div>
+</form>
 </div>
 </div>
 <!-- Bottom Navigation Bar -->
