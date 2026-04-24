@@ -183,9 +183,14 @@
 <span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="sort">sort</span>
 </div>
 </div>
-<div class="space-y-4 card-container">
-
+<!-- Card Container -->
+<div class="space-y-4 card-container flex flex-col">
 </div>
+
+<button class="font-body text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center space-x-1" id="show-more-tasks">
+<span>Show More</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
 
 </div>
 </div>
@@ -247,21 +252,21 @@
 <label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Task Priority</label>
 <div class="space-y-3">
 <label class="flex items-center gap-4 cursor-pointer group">
-<input checked="" class="hidden peer" name="priority" type="radio"/>
+<input checked="" class="hidden peer" name="priority" type="radio" value="Extreme"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
 <span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary transition-colors">Extreme</span>
 </label>
 <label class="flex items-center gap-4 cursor-pointer group">
-<input class="hidden peer" name="priority" type="radio"/>
+<input class="hidden peer" name="priority" type="radio" value="Moderate"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
 <span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">Moderate</span>
 </label>
 <label class="flex items-center gap-4 cursor-pointer group">
-<input class="hidden peer" name="priority" type="radio"/>
+<input class="hidden peer" name="priority" type="radio" value="Low"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
@@ -274,21 +279,21 @@
 <label class="block font-label text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-4">Status</label>
 <div class="space-y-3">
 <label class="flex items-center gap-4 cursor-pointer group">
-<input checked="" class="hidden peer" name="status" type="radio"/>
+<input checked="" class="hidden peer" name="status" type="radio" value="Not Started"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
 <span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary transition-colors">Not Started</span>
 </label>
 <label class="flex items-center gap-4 cursor-pointer group">
-<input class="hidden peer" name="status" type="radio"/>
+<input class="hidden peer" name="status" type="radio" value="In Progress"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
 <span class="text-sm font-medium text-on-surface-variant group-hover:text-primary transition-colors">In Progress</span>
 </label>
 <label class="flex items-center gap-4 cursor-pointer group">
-<input class="hidden peer" name="status" type="radio"/>
+<input class="hidden peer" name="status" type="radio" value="Completed"/>
 <div class="w-5 h-5 rounded-full border-2 border-outline peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-all">
 <div class="w-1.5 h-1.5 bg-white rounded-full opacity-0 peer-checked:opacity-100"></div>
 </div>
