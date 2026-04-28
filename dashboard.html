@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Focus-Forward Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -119,11 +120,11 @@
 <span class="material-symbols-outlined" data-icon="inbox">inbox</span>
 <span class="font-body text-sm">Inbox</span>
 </a>
-<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="completedTasks.html">
 <span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
 <span class="font-body text-sm">Completed</span>
 </a>
-<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="archive.html">
 <span class="material-symbols-outlined" data-icon="archive">archive</span>
 <span class="font-body text-sm">Archive</span>
 </a>
@@ -184,13 +185,15 @@
 </div>
 </div>
 <!-- Card Container -->
-<div class="space-y-4 card-container flex flex-col">
+<div class="space-y-4 card-container flex flex-col expanded">
 </div>
 
+<div class="flex justify-center mt-4">
 <button class="font-body text-sm font-semibold text-primary hover:text-primary-container transition-colors flex items-center space-x-1" id="show-more-tasks">
 <span>Show More</span>
 <span class="material-symbols-outlined text-sm">expand_more</span>
 </button>
+</div>
 
 </div>
 </div>
@@ -207,29 +210,13 @@
 <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
 <span class="material-symbols-outlined relative z-10 text-3xl" data-icon="add">add</span>
 </button>
-<!-- Bottom Navigation Bar - Mobile -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex justify-around items-center px-4 pb-safe z-50 border-t border-slate-200/15 dark:border-slate-800/15 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-200 rounded-2xl px-6 py-2 active:scale-90 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Today</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 active:scale-90 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="target">target</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Focus</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 hover:text-indigo-600 dark:hover:text-indigo-300 active:scale-90 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Settings</span>
-</a>
-</nav>
-
 
 
 
 <!-- add task model -->
 </main>
 <!-- Task Modal Overlay -->
-<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 task-model " style="display: none;" ;">
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 task-model bg-black/30 backdrop-blur-sm" style="display: none;" ;">
 <!-- Backdrop -->
 <div class="absolute inset-0 bg-on-surface/10 backdrop-blur-custom"></div>
 <!-- Modal Content -->
@@ -308,7 +295,7 @@
 <textarea  class="w-full bg-surface-container-highest border-none rounded-lg px-6 py-4 text-on-surface placeholder:text-outline font-body leading-relaxed focus:ring-2 focus:ring-primary transition-all resize-none" placeholder="Clarify the objective..." rows="4" name="task-description"></textarea>
 </div>
 <!-- Footer Actions -->
-<div class="px-10 py-8 bg-surface-container-low flex justify-end items-center gap-6">
+<div class="px-10 py-8 bg-surface-container-low flex justify-end items-center gap-6 ">
 <button type="button" class="text-primary font-bold text-sm tracking-wide uppercase px-6 py-2 hover:bg-primary/5 transition-colors rounded Cancel-Button">Cancel</button>
 <button type="button" class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-full shadow-lg shadow-primary/20 transform active:scale-95 transition-all SaveTask-Button">Save Task</button>
 </div>
@@ -316,7 +303,7 @@
 </div>
 </div>
 <!-- Bottom Navigation Bar -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
+<!-- <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.04)]">
 <div class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-100 rounded-xl px-5 py-2">
 <span class="material-symbols-outlined" data-icon="center_focus_strong">center_focus_strong</span>
 <span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Focus</span>
@@ -333,6 +320,6 @@
 <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
 <span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Archive</span>
 </div>
-</nav>
+</nav> -->
 <script src="dashBoard.js"></script>
 </body></html>

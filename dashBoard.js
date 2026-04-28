@@ -14,7 +14,7 @@ function renderTasks() {
         taskHTML += `
 <div class="group bg-surface-container-lowest hover:bg-white rounded-xl p-6 flex items-center justify-between transition-all duration-300 border border-transparent hover:border-outline-variant/30 shadow-sm hover:shadow-md">
 <div class="flex items-center space-x-6">
-<button class="w-7 h-7 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
+<button class="w-7 h-7 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors" title="Mark as Completed" onclick="completeTask(${index})">
 <div class="w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all"></div>
 </button>
 <div>
@@ -30,9 +30,10 @@ ${
 </div>
 <div class="flex items-center space-x-3">
 <button onclick="editTask(${index})" class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider Edit-Button hover:bg-secondary-container/80">Edit</button>
+
 <span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer hover:text-blue-500 transition delete-icon" onclick="deleteTask(${index})" style="font-size: 24px;">delete</span>
 </div>
-`
+</div>`; 
     })     
     tasksContainer.innerHTML = taskHTML;
     
@@ -65,6 +66,39 @@ function deleteTask(index) {
     // Reset expanded state
     document.querySelector('.card-container').dataset.expanded = 'false';
     
+    renderTasks();
+}
+
+// Complete task - Move to completed tasks
+function completeTask(index) {
+    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+    const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
+    
+    // Get the task that's being completed
+    const completedTask = tasks[index];
+    
+    // Add timestamp to completed task
+    completedTask.completedAt = new Date().toISOString();
+    
+    // Move task to completed tasks
+    completedTasks.push(completedTask);
+    
+    // Remove from active tasks
+    tasks.splice(index, 1);
+    
+    // Save to localStorage
+    localStorage.setItem('tasks:', JSON.stringify(tasks));
+    localStorage.setItem('completedTasks:', JSON.stringify(completedTasks));
+    
+    // Reset expanded state
+    document.querySelector('.card-container').dataset.expanded = 'false';
+    
+     Swal.fire({
+    title: "Done!",
+    text: "Task completed successfully!",
+    icon: "success",
+    confirmButtonText: "OK"
+  });
     renderTasks();
 }
 

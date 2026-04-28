@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Completed Tasks - Focus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#bcc2ff",
+                    "secondary-fixed": "#dee0ff",
+                    "outline": "#757684",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "secondary": "#4858ab",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#ffc7a2",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface-variant": "#454652",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "tertiary": "#6c3400",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffdcc6",
+                    "surface-tint": "#4955b3",
+                    "surface-bright": "#f8f9fa",
+                    "outline-variant": "#c5c5d4",
+                    "on-tertiary-fixed": "#301400",
+                    "on-secondary-container": "#27378a",
+                    "on-primary-fixed": "#000c62",
+                    "inverse-primary": "#bcc2ff",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#8f4700",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-container": "#96a5ff",
+                    "primary-container": "#4551af",
+                    "surface-container-high": "#e7e8e9",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#bac3ff",
+                    "surface-dim": "#d9dadb",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#dfe0ff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#cbcfff",
+                    "background": "#f8f9fa",
+                    "on-secondary-fixed": "#00105b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#2f3f92",
+                    "inverse-on-surface": "#f0f1f2",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "primary": "#2b3896",
+                    "on-primary-fixed-variant": "#303c9a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "display": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 40px -4px rgba(25, 28, 29, 0.06);
+        }
+        .glass-fab {
+            background: rgba(73, 85, 179, 0.15);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top App Bar -->
+<header class="bg-[#F8F9FA] dark:bg-slate-950 fixed top-0 z-50 w-full shadow-sm backdrop-blur-xl border-b border-slate-200/20 dark:border-slate-800/20">
+<div class="flex justify-start items-center px-8 h-16 w-full">
+<h1 class="font-['Manrope'] text-3xl font-bold text-[#283593] dark:text-indigo-300">Focus</h1>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<h2 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface mb-4">
+                Achieved.
+            </h2>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<p class="font-body text-on-surface-variant max-w-md leading-relaxed">
+                    You've successfully cleared your desk. Review your momentum and keep the flow alive.
+                </p>
+<button class="flex items-center gap-2 px-6 py-3 rounded-full bg-surface-container-high text-on-surface-variant font-medium hover:bg-surface-container-highest transition-all active:scale-95 self-start md:self-auto">
+<span class="material-symbols-outlined text-sm">archive</span>
+                    Archive All Tasks
+                </button>
+</div>
+</section>
+<!-- Stats Bento Grid Fragment -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 bg-primary-container p-8 rounded-xl flex flex-col justify-between min-h-[160px] relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container opacity-80">Weekly Momentum</span>
+<h3 class="font-headline text-3xl font-bold text-on-primary-container mt-2">24 Tasks Finalized</h3>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden relative z-10">
+<div class="bg-on-primary-container h-full w-[78%]"></div>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute top-[-20%] right-[-10%] w-64 h-64 bg-on-primary-container/10 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">task_alt</span>
+<span class="font-headline text-3xl font-bold text-on-surface">100%</span>
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant mt-1">Consistency</span>
+</div>
+</div>
+<!-- Completed Tasks List -->
+<div class="space-y-4 completed-tasks-container">
+<div class="flex items-center justify-between px-2 mb-6">
+<h4 class="font-headline text-lg font-bold text-on-surface">Recently Finished</h4>
+<button onclick="clearAllCompleted()" class="text-primary font-medium text-sm hover:underline decoration-2 underline-offset-4">Clear All</button>
+</div>
+</div>
+<!-- Empty state / Zen moment -->
+<div class="mt-20 text-center py-12 px-6 bg-surface-container-low/50 rounded-full border border-dashed border-outline-variant/30">
+<span class="material-symbols-outlined text-outline-variant text-5xl mb-4">potted_plant</span>
+<p class="font-headline text-xl font-medium text-outline">Everything is in its place.</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#F8F9FA]/80 dark:bg-slate-950/80 backdrop-blur-xl border-t border-slate-200/20 dark:border-slate-800/20">
+<div class="flex justify-around items-center pt-2 pb-6 px-4">
+<!-- Today Tab -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-700 dark:hover:text-indigo-300 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="dashboard.html">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Dashboard</span>
+</a>
+<!-- Completed Tab (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-[#283593] dark:text-indigo-200 rounded-xl px-5 py-2 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Completed</span>
+</a>
+<!-- Settings Tab -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-700 dark:hover:text-indigo-300 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Settings</span>
+</a>
+</div>
+</nav>
+<script src="completedTasks.js"></script>
+</body>
