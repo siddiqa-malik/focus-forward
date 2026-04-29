@@ -5,7 +5,6 @@ function renderCompletedTasks() {
     
     // Keep the header
     const header = container.querySelector('.flex');
-    header.style.color = completedTasks.length > 0 ? '#283593' : '#9E9E9E';
     
     container.innerHTML = '';
     container.appendChild(header);
@@ -96,11 +95,15 @@ function deleteCompletedTask(index) {
 
 // Clear all completed tasks
 function clearAllCompleted() {
-    if (confirm('Are you sure you want to clear all completed tasks?')) {
-        localStorage.setItem('completedTasks:', JSON.stringify([]));
+        localStorage.setItem('completedTasks:', JSON.stringify([]))
+        Swal.fire({
+  title: "All Clear!",
+  icon: "success",
+  draggable: true
+});
         renderCompletedTasks();
     }
-}
+
 
 // Render on page load
 document.addEventListener('DOMContentLoaded', () => {

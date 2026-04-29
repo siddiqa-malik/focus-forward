@@ -10,29 +10,28 @@ function renderTasks() {
     
     tasksContainer.innerHTML = '';
     let taskHTML = '';
-    visibleTasks.forEach((task, index) => {
+    visibleTasks.forEach((task, visibleIndex) => {
+        // Get actual index from full tasks array
+        const actualIndex = tasks.indexOf(task);
+        
         taskHTML += `
-<div class="group bg-surface-container-lowest hover:bg-white rounded-xl p-6 flex items-center justify-between transition-all duration-300 border border-transparent hover:border-outline-variant/30 shadow-sm hover:shadow-md">
-<div class="flex items-center space-x-6">
-<button class="w-7 h-7 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors" title="Mark as Completed" onclick="completeTask(${index})">
-<div class="w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all"></div>
-</button>
-<div>
-<h4 class="font-body text-lg font-bold text-on-surface pt-4 task-title ">${task.title}</h4>
-<p class="font-body text-sm text-on-surface-variant task-description">
-${
-    task.priority ? `<span class="font-body text-xs text-slate-600 dark:text-slate-400">Priority:${task.priority}</span> ` : ''
-}
-${
-    task.status ? `<br><span class="font-body text-xs text-slate-600 dark:text-slate-400">Status:${task.status}</span> ` : ''
-}</p>
-</div>
-</div>
-<div class="flex items-center space-x-3">
-<button onclick="editTask(${index})" class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider Edit-Button hover:bg-secondary-container/80">Edit</button>
-
-<span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer hover:text-blue-500 transition delete-icon" onclick="deleteTask(${index})" style="font-size: 24px;">delete</span>
-</div>
+<div class="group bg-surface-container-lowest editorial-shadow rounded-xl p-6 flex items-center gap-6 transition-all duration-300 hover:bg-surface-container-low">
+  <div class="flex-shrink-0">
+    <button id ="completedTask" class="w-8 h-8 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors cursor-pointer" title="Mark as Completed" onclick="completeTask(${actualIndex})">
+    </button>
+  </div>
+  <div class="flex-grow">
+    <h4 class="font-body text-lg font-semibold text-on-surface group-hover:text-primary transition-colors task-title">${task.title}</h4>
+    <div class="flex items-center gap-4 mt-2 flex-wrap">
+      ${task.status ? `<span class="px-2 py-0.5 rounded bg-primary-fixed/30 text-on-primary-fixed-variant font-label text-[10px] uppercase tracking-wider">${task.status}</span>` : ''}
+      ${task.priority ? `<span class="px-2 py-0.5 rounded bg-secondary-container/30 text-on-secondary-container font-label text-[10px] uppercase tracking-wider">${task.priority}</span>` : ''}
+    </div>
+    <textarea class="task-description" style="display:none;">${task.description || ''}</textarea>
+  </div>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <button onclick="editTask(${actualIndex})" class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider Edit-Button hover:bg-secondary-container/80">Edit</button>
+    <span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer hover:text-error transition delete-icon" onclick="deleteTask(${actualIndex})" style="font-size: 24px;">delete</span>
+  </div>
 </div>`; 
     })     
     tasksContainer.innerHTML = taskHTML;
@@ -57,11 +56,6 @@ function deleteTask(index) {
     tasks.splice(index, 1);
     localStorage.setItem('tasks:', JSON.stringify(tasks));
     
-    // Color change animation
-    event.target.style.color = '#040a35'; 
-    setTimeout(() => {
-        event.target.style.color = ''; 
-    }, 300);
     
     // Reset expanded state
     document.querySelector('.card-container').dataset.expanded = 'false';
@@ -73,6 +67,8 @@ function deleteTask(index) {
 function completeTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
     const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
+   completedTaskBtn =  document.getElementById('completedTask');
+   completedTaskBtn.appendChild(document.createElement('div')).className = 'w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all';
     
     // Get the task that's being completed
     const completedTask = tasks[index];
@@ -107,8 +103,8 @@ let EditIndex = null ;
 function editTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
     const task = tasks[index];  
-    document.querySelector('.task-Title').value = task.title;
-    document.querySelector('.task-description').value = task.description;
+    document.querySelector('input[name="task-Title"]').value = task.title;
+    document.querySelector('textarea[name="task-description"]').value = task.description || '';
     
     // Set priority radio button
     if (task.priority) {
@@ -158,6 +154,24 @@ document.addEventListener('DOMContentLoaded', () => {
         TaskForm.reset();
         TaskModel.style.display = 'none';
     });
+
+    // Overlay click handler - close modal when clicking outside
+    TaskModel.addEventListener('click', (event) => {
+        // Check if the click is on the modal container itself (not on children)
+        if (event.target !== TaskModel) {
+            EditIndex = null;
+            TaskForm.reset();
+            TaskModel.style.display = 'none';
+        }
+    });
+
+    // Prevent modal from closing when clicking inside the modal content
+    const modalContent = TaskModel.querySelector('.relative');
+    if (modalContent) {
+        modalContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
 
     // Save task
     SaveTaskButton.addEventListener('click', () => {
