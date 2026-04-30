@@ -14,10 +14,13 @@ function renderTasks() {
         // Get actual index from full tasks array
         const actualIndex = tasks.indexOf(task);
         
-        taskHTML += `
-<div class="group bg-surface-container-lowest editorial-shadow rounded-xl p-6 flex items-center gap-6 transition-all duration-300 hover:bg-surface-container-low">
-  <div class="flex-shrink-0">
-    <button id ="completedTask" class="w-8 h-8 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors cursor-pointer" title="Mark as Completed" onclick="completeTask(${actualIndex})">
+taskHTML += `
+<div class="bg-surface-container-lowest editorial-shadow rounded-xl p-6 flex items-center gap-6 transition-all duration-300 hover:bg-surface-container-low cursor-pointer task-card" onclick="openTaskDetails(${actualIndex})">
+  <div class="flex-shrink-0" onclick="event.stopPropagation()">
+<button class="completed-btn w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center transition-colors cursor-pointer" title="Mark as Completed" onclick="completeTask(${actualIndex})">
+      <span class="check-icon w-3 h-3 bg-primary rounded-sm opacity-0 active:opacity-100 scale-0 active:scale-100 transition-all flex items-center justify-center">
+        <span class="material-symbols-outlined text-white text-xs"></span>
+      </span>
     </button>
   </div>
   <div class="flex-grow">
@@ -28,11 +31,11 @@ function renderTasks() {
     </div>
     <textarea class="task-description" style="display:none;">${task.description || ''}</textarea>
   </div>
-  <div class="flex items-center gap-2 flex-shrink-0">
+  <div class="flex items-center gap-2 flex-shrink-0" onclick="event.stopPropagation()">
     <button onclick="editTask(${actualIndex})" class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider Edit-Button hover:bg-secondary-container/80">Edit</button>
     <span class="material-symbols-outlined text-on-surface-variant/40 cursor-pointer hover:text-error transition delete-icon" onclick="deleteTask(${actualIndex})" style="font-size: 24px;">delete</span>
   </div>
-</div>`; 
+</div>`;
     })     
     tasksContainer.innerHTML = taskHTML;
     
@@ -67,8 +70,6 @@ function deleteTask(index) {
 function completeTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
     const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
-   completedTaskBtn =  document.getElementById('completedTask');
-   completedTaskBtn.appendChild(document.createElement('div')).className = 'w-3 h-3 bg-primary rounded-sm opacity-0 group-hover:opacity-10 scale-0 group-hover:scale-100 transition-all';
     
     // Get the task that's being completed
     const completedTask = tasks[index];
@@ -99,6 +100,54 @@ function completeTask(index) {
 }
 
 let EditIndex = null ;
+let DetailsIndex = null;
+
+// Open task details modal
+function openTaskDetails(index) {
+    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+    const task = tasks[index];
+    
+    if (!task) return;
+    
+    DetailsIndex = index;
+    
+    // Update modal content with task details
+    const glassOverlay = document.querySelector('.glass-overlay');
+    
+    // Update priority badge
+    const priorityBadge = glassOverlay.querySelector('.bg-tertiary-container');
+    if (priorityBadge) {
+        priorityBadge.textContent = task.priority || 'Not Set';
+    }
+    
+    // Update title
+    const titleElement = glassOverlay.querySelector('.font-display.text-3xl');
+    if (titleElement) {
+        titleElement.textContent = task.title || 'No Title';
+    }
+    
+    // Update status
+    const statusElement = glassOverlay.querySelector('.font-body.font-bold.text-lg');
+    if (statusElement) {
+        statusElement.innerHTML = `<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pending</span><span>${task.status || 'Not Started'}</span>`;
+    }
+    
+    // Update description
+    const descriptionElement = glassOverlay.querySelector('.font-body.text-base.text-on-surface-variant.leading-relaxed');
+    if (descriptionElement) {
+        descriptionElement.textContent = task.description || 'No description provided.';
+    }
+    
+    // Show modal
+    glassOverlay.style.display = 'flex';
+}
+
+// Close task details modal
+function closeTaskDetails() {
+    const glassOverlay = document.querySelector('.glass-overlay');
+    glassOverlay.style.display = 'none';
+    DetailsIndex = null;
+}
 
 function editTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
@@ -132,10 +181,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const TaskForm = document.querySelector('.task-form');
     const cardContainer = document.querySelector('.card-container');
 
-    // Render tasks on page load
+// Render tasks on page load
     renderTasks();
 
-    // Show More button click handler
+    // Glass overlay - Task Details Modal handlers
+    const glassOverlay = document.querySelector('.glass-overlay');
+    
+    // Close button (X) click handler
+    const closeDetailsBtn = glassOverlay.querySelector('.absolute.top-8.right-8');
+    if (closeDetailsBtn) {
+        closeDetailsBtn.addEventListener('click', closeTaskDetails);
+    }
+    
+    // Close button (footer) click handler
+    const closeFooterBtn = glassOverlay.querySelector('footer button:last-child');
+    if (closeFooterBtn) {
+        closeFooterBtn.addEventListener('click', closeTaskDetails);
+    }
+    
+    // Overlay click handler - close modal when clicking outside
+    glassOverlay.addEventListener('click', (event) => {
+        if (event.target === glassOverlay) {
+            closeTaskDetails();
+        }
+    });
+    
+    // Prevent modal from closing when clicking inside the modal content
+    const glassModalContent = glassOverlay.querySelector('article');
+    if (glassModalContent) {
+        glassModalContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
+
     const showMoreBtn = document.getElementById('show-more-tasks');
     showMoreBtn.addEventListener('click', () => {
         const isExpanded = cardContainer.dataset.expanded === 'true';
