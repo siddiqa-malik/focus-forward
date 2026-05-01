@@ -1,8 +1,17 @@
+// Get user-specific task key
+function getTaskKey() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        return 'tasks:' + currentUser.email;
+    }
+    return 'tasks:';
+}
+
 // Render tasks from localStorage
 function renderTasks() {
     const tasksContainer = document.querySelector('.card-container');
     const showMoreBtn = document.getElementById('show-more-tasks');
-    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+    const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
     
     // Check expanded state
     let isExpanded = tasksContainer.dataset.expanded === 'true';
@@ -55,9 +64,9 @@ taskHTML += `
 
 // Delete task
 function deleteTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+    const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
     tasks.splice(index, 1);
-    localStorage.setItem('tasks:', JSON.stringify(tasks));
+    localStorage.setItem(getTaskKey(), JSON.stringify(tasks));
     
     
     // Reset expanded state
@@ -68,8 +77,8 @@ function deleteTask(index) {
 
 // Complete task - Move to completed tasks
 function completeTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
-    const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
+    const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
+    const completedTasks = JSON.parse(localStorage.getItem(getTaskKey() + 'completed')) || [];
     
     // Get the task that's being completed
     const completedTask = tasks[index];
@@ -84,8 +93,8 @@ function completeTask(index) {
     tasks.splice(index, 1);
     
     // Save to localStorage
-    localStorage.setItem('tasks:', JSON.stringify(tasks));
-    localStorage.setItem('completedTasks:', JSON.stringify(completedTasks));
+    localStorage.setItem(getTaskKey(), JSON.stringify(tasks));
+    localStorage.setItem(getTaskKey() + 'completed', JSON.stringify(completedTasks));
     
     // Reset expanded state
     document.querySelector('.card-container').dataset.expanded = 'false';
@@ -103,55 +112,55 @@ let EditIndex = null ;
 let DetailsIndex = null;
 
 // Open task details modal
-function openTaskDetails(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
-    const task = tasks[index];
+// function openTaskDetails(index) {
+//     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+//     const task = tasks[index];
     
-    if (!task) return;
+//     if (!task) return;
     
-    DetailsIndex = index;
+//     DetailsIndex = index;
     
-    // Update modal content with task details
-    const glassOverlay = document.querySelector('.glass-overlay');
+//     // Update modal content with task details
+//     const glassOverlay = document.querySelector('.glass-overlay');
     
-    // Update priority badge
-    const priorityBadge = glassOverlay.querySelector('.bg-tertiary-container');
-    if (priorityBadge) {
-        priorityBadge.textContent = task.priority || 'Not Set';
-    }
+//     // Update priority badge
+//     const priorityBadge = glassOverlay.querySelector('.bg-tertiary-container');
+//     if (priorityBadge) {
+//         priorityBadge.textContent = task.priority || 'Not Set';
+//     }
     
-    // Update title
-    const titleElement = glassOverlay.querySelector('.font-display.text-3xl');
-    if (titleElement) {
-        titleElement.textContent = task.title || 'No Title';
-    }
+//     // Update title
+//     const titleElement = glassOverlay.querySelector('.font-display.text-3xl');
+//     if (titleElement) {
+//         titleElement.textContent = task.title || 'No Title';
+//     }
     
-    // Update status
-    const statusElement = glassOverlay.querySelector('.font-body.font-bold.text-lg');
-    if (statusElement) {
-        statusElement.innerHTML = `<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pending</span><span>${task.status || 'Not Started'}</span>`;
-    }
+//     // Update status
+//     const statusElement = glassOverlay.querySelector('.font-body.font-bold.text-lg');
+//     if (statusElement) {
+//         statusElement.innerHTML = `<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pending</span><span>${task.status || 'Not Started'}</span>`;
+//     }
     
-    // Update description
-    const descriptionElement = glassOverlay.querySelector('.font-body.text-base.text-on-surface-variant.leading-relaxed');
-    if (descriptionElement) {
-        descriptionElement.textContent = task.description || 'No description provided.';
-    }
+//     // Update description
+//     const descriptionElement = glassOverlay.querySelector('.font-body.text-base.text-on-surface-variant.leading-relaxed');
+//     if (descriptionElement) {
+//         descriptionElement.textContent = task.description || 'No description provided.';
+//     }
     
-    // Show modal
-    glassOverlay.style.display = 'flex';
-}
+//     // Show modal
+//     glassOverlay.style.display = 'flex';
+// }
 
-// Close task details modal
-function closeTaskDetails() {
-    const glassOverlay = document.querySelector('.glass-overlay');
-    glassOverlay.style.display = 'none';
-    DetailsIndex = null;
-}
+// // Close task details modal
+// function closeTaskDetails() {
+//     const glassOverlay = document.querySelector('.glass-overlay');
+//     glassOverlay.style.display = 'none';
+//     DetailsIndex = null;
+// }
 
 function editTask(index) {
-    const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
-    const task = tasks[index];  
+    const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
+    const task = tasks[index];
     document.querySelector('input[name="task-Title"]').value = task.title;
     document.querySelector('textarea[name="task-description"]').value = task.description || '';
     
@@ -184,35 +193,35 @@ document.addEventListener('DOMContentLoaded', () => {
 // Render tasks on page load
     renderTasks();
 
-    // Glass overlay - Task Details Modal handlers
-    const glassOverlay = document.querySelector('.glass-overlay');
+    // // Glass overlay - Task Details Modal handlers
+    // const glassOverlay = document.querySelector('.glass-overlay');
     
-    // Close button (X) click handler
-    const closeDetailsBtn = glassOverlay.querySelector('.absolute.top-8.right-8');
-    if (closeDetailsBtn) {
-        closeDetailsBtn.addEventListener('click', closeTaskDetails);
-    }
+    // // Close button (X) click handler
+    // const closeDetailsBtn = glassOverlay.querySelector('.absolute.top-8.right-8');
+    // if (closeDetailsBtn) {
+    //     closeDetailsBtn.addEventListener('click', closeTaskDetails);
+    // }
     
-    // Close button (footer) click handler
-    const closeFooterBtn = glassOverlay.querySelector('footer button:last-child');
-    if (closeFooterBtn) {
-        closeFooterBtn.addEventListener('click', closeTaskDetails);
-    }
+    // // Close button (footer) click handler
+    // const closeFooterBtn = glassOverlay.querySelector('footer button:last-child');
+    // if (closeFooterBtn) {
+    //     closeFooterBtn.addEventListener('click', closeTaskDetails);
+    // }
     
-    // Overlay click handler - close modal when clicking outside
-    glassOverlay.addEventListener('click', (event) => {
-        if (event.target === glassOverlay) {
-            closeTaskDetails();
-        }
-    });
+    // // Overlay click handler - close modal when clicking outside
+    // glassOverlay.addEventListener('click', (event) => {
+    //     if (event.target === glassOverlay) {
+    //         closeTaskDetails();
+    //     }
+    // });
     
-    // Prevent modal from closing when clicking inside the modal content
-    const glassModalContent = glassOverlay.querySelector('article');
-    if (glassModalContent) {
-        glassModalContent.addEventListener('click', (event) => {
-            event.stopPropagation();
-        });
-    }
+    // // Prevent modal from closing when clicking inside the modal content
+    // const glassModalContent = glassOverlay.querySelector('article');
+    // if (glassModalContent) {
+    //     glassModalContent.addEventListener('click', (event) => {
+    //         event.stopPropagation();
+    //     });
+    // }
 
     const showMoreBtn = document.getElementById('show-more-tasks');
     showMoreBtn.addEventListener('click', () => {
@@ -264,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Get existing tasks
-        let tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
+// Get existing tasks
+        let tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
         
         // Create new task object
         const newTask = {
@@ -287,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Save to localStorage
-        localStorage.setItem('tasks:', JSON.stringify(tasks));
+        localStorage.setItem(getTaskKey(), JSON.stringify(tasks));
         
         // Reset form
         TaskForm.reset();

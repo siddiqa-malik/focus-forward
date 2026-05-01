@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="redirect.js"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -211,4 +212,49 @@
 </div>
 
 
+<script>
+    // Login functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.querySelector('form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+const registerLink = document.querySelector('.mt-12 a');
+
+        // Redirect to registration page
+        if (registerLink) {
+            registerLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'registration.html';
+            });
+        }
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+
+            // Get registered users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Find user with matching credentials
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                // Store current user
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid email or password. Please check your credentials or create a new account.');
+            }
+        });
+    });
+</script>
 </body></html>
