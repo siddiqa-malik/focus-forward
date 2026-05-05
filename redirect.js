@@ -9,7 +9,7 @@ function checkAuthAndRedirect() {
         // User is logged in
         if (currentPage === 'login.html' || currentPage === 'registration.html' || currentPage === '') {
             // Redirect to dashboard if on login/registration/root page
-            window.location.href = 'dashboard.html';
+            window.location.href = 'index.html';
         }
     } else {
         // User is not logged in

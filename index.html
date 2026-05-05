@@ -113,7 +113,7 @@
 </div>
 <nav class="space-y-1">
     
-<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="dashboard.html">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="inbox.html">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-body text-sm">Dashboard</span>
 </a>
@@ -332,29 +332,6 @@
 
 
 <script src="redirect.js"></script>
-<script src="dashBoard.js"></script>
-<script>
-    // Dashboard initialization - Load current user info and handle logout
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load current user info
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser) {
-            document.getElementById('user-name').textContent = currentUser.name;
-            document.getElementById('user-email').textContent = currentUser.email;
-        }
+<script src="index.js"></script>
 
-        // Handle logout
-        const logoutLink = document.querySelector('.logout-link');
-        if (logoutLink) {
-            logoutLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Clear current user
-                localStorage.removeItem('currentUser');
-                // Redirect to login
-                window.location.href = 'login.html';
-            });
-        }
-    });
-
-</script>
 </body></html>
