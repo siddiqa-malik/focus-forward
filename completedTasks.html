@@ -98,22 +98,24 @@
   </head>
 <body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
 
-  <aside class="hidden md:flex fixed left-0 top-0 h-full w-80 rounded-r-2xl bg-slate-50 dark:bg-slate-950 bg-slate-100/50 dark:bg-slate-900/50 shadow-2xl flex-col p-6 space-y-2 z-40">
+ <!-- Navigation Drawer (Sidebar) - Desktop -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 rounded-r-2xl bg-slate-50 dark:bg-slate-950 bg-slate-100/50 dark:bg-slate-900/50 shadow-2xl flex-col p-6 space-y-2 z-40">
 <div class="flex items-center space-x-3 mb-10 px-2">
 <div class="w-12 h-12 rounded-full overflow-hidden bg-primary-fixed">
 <img alt="Alex Curator" data-alt="Professional portrait of a focused man in a creative studio setting with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZBfAUQ89w2-AschtBr04BFBnmAkHgO8LF2MoDgwxbcgCkBQooff-_09_vDFlR4Ktv0j2kn0tpR7G0aaf04WP0VEMC_PZ3UyVmx4ltOHB_wcNlbio4ikiAOeFP9p-3H3DNdfls5YU9JT7PT9VnG9ZosI56gA_ZhdPy8Xk4MxTpjCIdIRzN8ZDDW3dClqaORYqZ1-Oc_mhXFpB9ublaylxlJBWCJppKqD3wRS5kbp33CJ0KU6JfX6rchy-nIlZPsnuSU0j6e39z6t0L"/>
 </div>
-<div>
-<p class="font-headline font-bold text-indigo-900 text-base">Alex Curator</p>
-<p class="font-body text-xs text-slate-600 dark:text-slate-400">Focusing on Deep Work</p>
+<div class="user-info">
+<p class="font-headline font-bold text-indigo-900 text-base" id="user-name">User</p>
+<p class="font-body text-xs text-slate-600 dark:text-slate-400" id="user-email">Loading...</p>
 </div>
 </div>
 <nav class="space-y-1">
-<a class="flex items-center space-x-3 px-4 py-3 bg-indigo-100/50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 font-bold rounded-lg transition-all duration-300" href="dashboard.html">
+    
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="dashboard.html">
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-body text-sm">Dashboard</span>
 </a>
-<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="inbox.html">
 <span class="material-symbols-outlined" data-icon="inbox">inbox</span>
 <span class="font-body text-sm">Inbox</span>
 </a>
@@ -125,7 +127,7 @@
 <span class="material-symbols-outlined" data-icon="archive">archive</span>
 <span class="font-body text-sm">Archive</span>
 </a>
-<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300" href="#">
+<a class="flex items-center space-x-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg transition-all duration-300 logout-link" href="#">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
 <span class="font-body text-sm">Logout</span>
 </a>
@@ -136,12 +138,7 @@
 
 
 
-<!-- Top App Bar -->
-<header class="bg-[#F8F9FA] dark:bg-slate-950 fixed top-0 z-50 w-full shadow-sm backdrop-blur-xl border-b border-slate-200/20 dark:border-slate-800/20">
-<div class="flex justify-start items-center px-8 h-16 w-full">
-<h1 class="font-['Manrope'] text-3xl font-bold text-[#283593] dark:text-indigo-300">Focus</h1>
-</div>
-</header>
+
 <main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
 <!-- Hero Section -->
 <section class="mb-12">
@@ -192,25 +189,11 @@
 </main>
 
 
-<!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#F8F9FA]/80 dark:bg-slate-950/80 backdrop-blur-xl border-t border-slate-200/20 dark:border-slate-800/20">
-<div class="flex justify-around items-center pt-2 pb-6 px-4">
-<!-- Today Tab -->
-<!-- <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-700 dark:hover:text-indigo-300 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="dashboard.html">
-<span class="material-symbols-outlined mb-1">calendar_today</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Dashboard</span>
-</a>
-<!-- Completed Tab (ACTIVE) -->
-<!-- <a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-[#283593] dark:text-indigo-200 rounded-xl px-5 py-2 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="#">
-<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">task_alt</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Completed</span>
-</a> -->
-<!-- Settings Tab -->
-<!-- <a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-indigo-700 dark:hover:text-indigo-300 active:scale-90 transition-all cubic-bezier(0.4, 0, 0.2, 1)" href="#">
-<span class="material-symbols-outlined mb-1">settings</span>
-<span class="font-['Inter'] text-[10px] font-medium uppercase tracking-widest">Settings</span>
-</a> -->
+
 </div>
 </nav>
 <script src="completedTasks.js"></script>
-</body>
+<script src="dashBoard.js"></script>
+
+</body></html>
+

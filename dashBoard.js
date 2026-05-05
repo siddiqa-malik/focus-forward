@@ -112,52 +112,8 @@ function completeTask(index) {
 let EditIndex = null ;
 let DetailsIndex = null;
 
-// Open task details modal
-// function openTaskDetails(index) {
-//     const tasks = JSON.parse(localStorage.getItem('tasks:')) || [];
-//     const task = tasks[index];
     
-//     if (!task) return;
-    
-//     DetailsIndex = index;
-    
-//     // Update modal content with task details
-//     const glassOverlay = document.querySelector('.glass-overlay');
-    
-//     // Update priority badge
-//     const priorityBadge = glassOverlay.querySelector('.bg-tertiary-container');
-//     if (priorityBadge) {
-//         priorityBadge.textContent = task.priority || 'Not Set';
-//     }
-    
-//     // Update title
-//     const titleElement = glassOverlay.querySelector('.font-display.text-3xl');
-//     if (titleElement) {
-//         titleElement.textContent = task.title || 'No Title';
-//     }
-    
-//     // Update status
-//     const statusElement = glassOverlay.querySelector('.font-body.font-bold.text-lg');
-//     if (statusElement) {
-//         statusElement.innerHTML = `<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pending</span><span>${task.status || 'Not Started'}</span>`;
-//     }
-    
-//     // Update description
-//     const descriptionElement = glassOverlay.querySelector('.font-body.text-base.text-on-surface-variant.leading-relaxed');
-//     if (descriptionElement) {
-//         descriptionElement.textContent = task.description || 'No description provided.';
-//     }
-    
-//     // Show modal
-//     glassOverlay.style.display = 'flex';
-// }
 
-// // Close task details modal
-// function closeTaskDetails() {
-//     const glassOverlay = document.querySelector('.glass-overlay');
-//     glassOverlay.style.display = 'none';
-//     DetailsIndex = null;
-// }
 
 function editTask(index) {
     const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
@@ -194,35 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Render tasks on page load
     renderTasks();
 
-    // // Glass overlay - Task Details Modal handlers
-    // const glassOverlay = document.querySelector('.glass-overlay');
     
-    // // Close button (X) click handler
-    // const closeDetailsBtn = glassOverlay.querySelector('.absolute.top-8.right-8');
-    // if (closeDetailsBtn) {
-    //     closeDetailsBtn.addEventListener('click', closeTaskDetails);
-    // }
-    
-    // // Close button (footer) click handler
-    // const closeFooterBtn = glassOverlay.querySelector('footer button:last-child');
-    // if (closeFooterBtn) {
-    //     closeFooterBtn.addEventListener('click', closeTaskDetails);
-    // }
-    
-    // // Overlay click handler - close modal when clicking outside
-    // glassOverlay.addEventListener('click', (event) => {
-    //     if (event.target === glassOverlay) {
-    //         closeTaskDetails();
-    //     }
-    // });
-    
-    // // Prevent modal from closing when clicking inside the modal content
-    // const glassModalContent = glassOverlay.querySelector('article');
-    // if (glassModalContent) {
-    //     glassModalContent.addEventListener('click', (event) => {
-    //         event.stopPropagation();
-    //     });
-    // }
 
     const showMoreBtn = document.getElementById('show-more-tasks');
     showMoreBtn.addEventListener('click', () => {
@@ -313,11 +241,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function setActiveSidebarLink() {
+  const sidebarNav = document.querySelector('nav.space-y-1');
+  if (!sidebarNav) return;
+  
+  const links = sidebarNav.querySelectorAll('a');
+  const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+  
+  // Reset all links
+  links.forEach(link => {
+    link.classList.remove(
+      "bg-indigo-100/50",
+      "dark:bg-indigo-900/30",
+      "text-indigo-800",
+      "dark:text-indigo-200",
+      "font-bold"
+    );
+    link.classList.add(
+      "text-slate-600",
+      "dark:text-slate-400",
+      "hover:bg-slate-200",
+      "dark:hover:bg-slate-800"
+    );
+  });}
+  
+  // Activate matching link only
+//   links.forEach(link => {
+//     const linkPage = link.getAttribute('href').replace('.html', '');
+//     if (linkPage === currentPage) {
+//       link.classList.add(
+//         "bg-indigo-100/50",
+//         "dark:bg-indigo-900/30",
+//         "text-indigo-800",
+//         "dark:text-indigo-200",
+//         "font-bold"
+//       );
+//       link.classList.remove(
+//         "text-slate-600",
+//         "dark:text-slate-400",
+//         "hover:bg-slate-200",
+//         "dark:hover:bg-slate-800"
+//       );
+//     }
+//   });
+// }
+
+// Run sidebar logic
 
 
+// Dashboard initialization - Load current user info and handle logout
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load current user info
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            document.getElementById('user-name').textContent = currentUser.name;
+            document.getElementById('user-email').textContent = currentUser.email;
+        }
 
-
-
-
-    
+        // Handle logout
+        const logoutLink = document.querySelector('.logout-link');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Clear current user
+                localStorage.removeItem('currentUser');
+                // Redirect to login
+                window.location.href = 'login.html';
+            });
+        }
+    });
         
