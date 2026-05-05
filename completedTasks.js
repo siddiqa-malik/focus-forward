@@ -1,7 +1,17 @@
+// Get user-specific completed tasks key
+function getTaskKey() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        return 'tasks:' + currentUser.email;
+    }
+    return 'tasks:';
+}
+
 //Render completed tasks
 function renderCompletedTasks() {
     const container = document.querySelector('.completed-tasks-container');
-    const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
+    const completedKey = getTaskKey() + 'completed';
+    const completedTasks = JSON.parse(localStorage.getItem(completedKey)) || [];
     
     // Keep the header
     const header = container.querySelector('.flex');
@@ -87,15 +97,17 @@ function renderCompletedTasks() {
 
 // Delete completed task
 function deleteCompletedTask(index) {
-    const completedTasks = JSON.parse(localStorage.getItem('completedTasks:')) || [];
+    const completedKey = getTaskKey() + 'completed';
+    const completedTasks = JSON.parse(localStorage.getItem(completedKey)) || [];
     completedTasks.splice(index, 1);
-    localStorage.setItem('completedTasks:', JSON.stringify(completedTasks));
+    localStorage.setItem(completedKey, JSON.stringify(completedTasks));
     renderCompletedTasks();
 }
 
 // Clear all completed tasks
 function clearAllCompleted() {
-        localStorage.setItem('completedTasks:', JSON.stringify([]))
+        const completedKey = getTaskKey() + 'completed';
+        localStorage.setItem(completedKey, JSON.stringify([]))
         Swal.fire({
   title: "All Clear!",
   icon: "success",

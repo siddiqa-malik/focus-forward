@@ -78,7 +78,8 @@ function deleteTask(index) {
 // Complete task - Move to completed tasks
 function completeTask(index) {
     const tasks = JSON.parse(localStorage.getItem(getTaskKey())) || [];
-    const completedTasks = JSON.parse(localStorage.getItem(getTaskKey() + 'completed')) || [];
+    const completedKey = getTaskKey() + 'completed';
+    const completedTasks = JSON.parse(localStorage.getItem(completedKey)) || [];
     
     // Get the task that's being completed
     const completedTask = tasks[index];
@@ -94,7 +95,7 @@ function completeTask(index) {
     
     // Save to localStorage
     localStorage.setItem(getTaskKey(), JSON.stringify(tasks));
-    localStorage.setItem(getTaskKey() + 'completed', JSON.stringify(completedTasks));
+    localStorage.setItem(completedKey, JSON.stringify(completedTasks));
     
     // Reset expanded state
     document.querySelector('.card-container').dataset.expanded = 'false';
