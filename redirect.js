@@ -13,7 +13,7 @@ function checkAuthAndRedirect() {
         }
     } else {
         // User is not logged in
-        if (currentPage === 'dashboard.html' || currentPage === 'completedTasks.html') {
+        if (currentPage === 'index.html' || currentPage === 'completedTasks.html') {
             // Redirect to login if trying to access protected pages
             window.location.href = 'login.html';
         }
