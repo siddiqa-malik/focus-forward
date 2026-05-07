@@ -33,21 +33,29 @@
 
 function checkAuthAndRedirect() {
     const currentUser = localStorage.getItem('currentUser');
-    const path = window.location.pathname;
+    
+    // 1. Get the current path and force it to lowercase to avoid case issues
+    const path = window.location.pathname.toLowerCase();
 
-    // Define your page groups based on URL keywords
-    const isAuthPage = path.includes('login') || path.includes('registration') || path === '/';
-    const isProtectedPage = path.includes('index') || path.includes('completedTasks');
+    // DEBUG: This will show you exactly what Vercel sees in your browser console (F12)
+    console.log("Current Path is:", path);
+    console.log("User Logged In:", !!currentUser);
 
+    // 2. Define the page types
+    // This covers "/" (home), "index", "index.html", "login", "login.html", etc.
+    const isHomePage = (path === '/' || path.includes('index'));
+    const isAuthPage = (path.includes('login') || path.includes('registration'));
+    const isProtectedRoute = (isHomePage || path.includes('completedtasks'));
+
+    // 3. Logic
     if (currentUser) {
-        // If logged in and trying to access login/reg or the root/landing
+        // If logged in, don't let them see login/register pages
         if (isAuthPage) {
-            window.location.href = '/index.html'; 
+            window.location.href = '/index.html';
         }
     } else {
-        // If NOT logged in and trying to access protected pages
-        // Also check if we are at root "/" - usually you want to force login from there too
-        if (isProtectedPage || path === '/') {
+        // If NOT logged in, and they are on a protected page OR the home root
+        if (isProtectedRoute) {
             window.location.href = '/login.html';
         }
     }
