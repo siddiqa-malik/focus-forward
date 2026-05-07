@@ -4,12 +4,7 @@
 function checkAuthAndRedirect() {
     const currentUser = localStorage.getItem('currentUser');
 
-    // Normalize path -> page name
-    // Examples:
-    //   /                 -> ''
-    //   /index.html       -> 'index.html'
-    //   /index            -> 'index'
-    //   /completedTasks  -> 'completedTasks'
+    
     let page = window.location.pathname.split('/').pop();
     if (page === '') page = 'root';
     if (page === 'index') page = 'index.html';
