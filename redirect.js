@@ -20,7 +20,7 @@ function checkAuthAndRedirect() {
         }
     } else {
         // Logged out: block protected pages
-        if (isProtectedRoute) {
+        if (isProtectedPage || path === '/') {
             window.location.href = 'login.html';
         }
     }
