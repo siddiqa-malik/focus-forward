@@ -27,9 +27,8 @@
 // }
 
 
-// // Run on page load
-// document.addEventListener('DOMContentLoaded', checkAuthAndRedirect);
-
+// Run on page load
+document.addEventListener('DOMContentLoaded', checkAuthAndRedirect);
 
 function checkAuthAndRedirect() {
     const currentUser = localStorage.getItem('currentUser');
@@ -43,7 +42,7 @@ function checkAuthAndRedirect() {
 
     // 2. Define the page types
     // This covers "/" (home), "index", "index.html", "login", "login.html", etc.
-    const isHomePage = (path === '/' || path.includes('index'));
+    const isHomePage = (path === '/' || path === '/index.html' || path.endsWith('/index') || path.endsWith('/'));
     const isAuthPage = (path.includes('login') || path.includes('registration'));
     const isProtectedRoute = (isHomePage || path.includes('completedtasks'));
 
@@ -59,4 +58,4 @@ function checkAuthAndRedirect() {
             window.location.href = '/login.html';
         }
     }
-}
+}
