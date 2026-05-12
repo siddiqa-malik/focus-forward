@@ -284,7 +284,7 @@ function setActiveSidebarLink() {
 //       );
 //     }
 //   });
-// }
+
 
 // Run sidebar logic
 

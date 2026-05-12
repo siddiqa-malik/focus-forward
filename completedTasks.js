@@ -116,4 +116,12 @@ function clearAllCompleted() {
         renderCompletedTasks();
     }
 
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    renderCompletedTasks();
+});
+
+
+
+
 

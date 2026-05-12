@@ -28,34 +28,84 @@
 
 
 // Run on page load
+// document.addEventListener('DOMContentLoaded', checkAuthAndRedirect);
+
+// function checkAuthAndRedirect() {
+//     const currentUser = localStorage.getItem('currentUser');
+    
+//     // 1. Get the current path and force it to lowercase to avoid case issues
+//     const path = window.location.pathname.toLowerCase();
+
+//     // DEBUG: This will show you exactly what Vercel sees in your browser console (F12)
+//     console.log("Current Path is:", path);
+//     console.log("User Logged In:", !!currentUser);
+
+//     // 2. Define the page types
+//     // This covers "/" (home), "index", "index.html", "login", "login.html", etc.
+//     const isHomePage = (path === '/' || path === '/index.html' || path.endsWith('/index') || path.endsWith('/'));
+//     const isAuthPage = (path.includes('login') || path.includes('registration'));
+//     const isProtectedRoute = (isHomePage || path.includes('completedtasks'));
+
+//     // 3. Logic
+//     if (currentUser) {
+//         // If logged in, don't let them see login/register pages
+//         if (isAuthPage) {
+//             window.location.href = '/index.html';
+//         }
+//     } else {
+//         // If NOT logged in, and they are on a protected page OR the home root
+//         if (isProtectedRoute) {
+//             window.location.href = '/login.html';
+//         }
+//     }
+// }
+
 document.addEventListener('DOMContentLoaded', checkAuthAndRedirect);
 
 function checkAuthAndRedirect() {
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // 1. Get the current path and force it to lowercase to avoid case issues
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
     const path = window.location.pathname.toLowerCase();
 
-    // DEBUG: This will show you exactly what Vercel sees in your browser console (F12)
-    console.log("Current Path is:", path);
-    console.log("User Logged In:", !!currentUser);
+    const isHomePage =
+        (path === '/' ||
+         path === '/index.html' ||
+         path.endsWith('/index') ||
+         path.endsWith('/'));
 
-    // 2. Define the page types
-    // This covers "/" (home), "index", "index.html", "login", "login.html", etc.
-    const isHomePage = (path === '/' || path === '/index.html' || path.endsWith('/index') || path.endsWith('/'));
-    const isAuthPage = (path.includes('login') || path.includes('registration'));
-    const isProtectedRoute = (isHomePage || path.includes('completedtasks'));
+    const isAuthPage =
+        (path.includes('login') ||
+         path.includes('registration'));
 
-    // 3. Logic
+    const isProtectedRoute =
+        (isHomePage || path.includes('completedtasks'));
+
+
+    // ✅ Logged In
     if (currentUser) {
-        // If logged in, don't let them see login/register pages
+
+        // show page
+        document.body.classList.remove('hidden');
+
+        // stop access to login/register
         if (isAuthPage) {
             window.location.href = '/index.html';
         }
-    } else {
-        // If NOT logged in, and they are on a protected page OR the home root
+
+    }
+
+    // ❌ Not Logged In
+    else {
+
+        // redirect protected routes
         if (isProtectedRoute) {
             window.location.href = '/login.html';
         }
+
+        // allow auth pages
+        else {
+            document.body.classList.remove('hidden');
+        }
     }
-}
+}
